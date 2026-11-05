@@ -31,6 +31,9 @@
   --color-mustard: var(--mustard);
   --color-mustard-foreground: var(--mustard-foreground);
   --color-coal: var(--coal);
+  --color-cream: var(--cream);
+  --color-cream-foreground: var(--cream-foreground);
+  --color-cream-muted: var(--cream-muted);
   --font-display: "Anton", "Impact", sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Space Grotesk", system-ui, sans-serif;
@@ -62,6 +65,9 @@
   --ring: oklch(0.84 0.17 88);
   --glow-red: 0 0 24px oklch(0.63 0.22 30 / 55%), 0 0 60px oklch(0.63 0.22 30 / 25%);
   --glow-mustard: 0 0 18px oklch(0.84 0.17 88 / 45%);
+  --cream: oklch(0.94 0.03 85);
+  --cream-foreground: oklch(0.18 0.01 50);
+  --cream-muted: oklch(0.42 0.02 60);
   --gradient-hero: linear-gradient(90deg, oklch(0.16 0.005 50 / 96%) 0%, oklch(0.16 0.005 50 / 75%) 45%, oklch(0.16 0.005 50 / 10%) 100%);
   --gradient-fade: linear-gradient(0deg, oklch(0.16 0.005 50) 0%, transparent 40%);
 }
@@ -106,6 +112,12 @@
 @utility animate-marquee { animation: marquee 28s linear infinite; }
 @utility animate-flicker { animation: flicker 5s infinite; }
 
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+@keyframes zoomin { from { transform: scale(1.12); } to { transform: scale(1); } }
+@utility animate-zoomin { animation: zoomin 2.4s cubic-bezier(.2,.7,.2,1) both; }
+
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
